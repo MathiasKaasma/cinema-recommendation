@@ -43,4 +43,9 @@ public class MovieController {
         }
         return movieService.getFilteredMovies(title, genre, ageRating, startTime, language, rating, suggestion);
     }
+
+    @GetMapping("seats")
+    public int[][] getSeats() {
+        return movieService.getSeats();
+    }
 }

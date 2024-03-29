@@ -13,9 +13,13 @@ export default function Movie({ movie, index }) {
             Hinnang:{" "}
             {(Math.round(movie.rating * 1000) / 1000).toFixed(3).slice(0, -1)}
           </h3>
+          <h3>
+            Soovitus: {(Math.round(movie.suggestion * 100) / 10).toFixed(1)}%
+          </h3>
         </div>
         <div className="secondary-data">
           <h2>{movie.language}</h2>
+          <br></br>
           <h3>Vanusepiirang: {movie.ageRating}</h3>
           <h3>Algusaeg: {new Date(movie.startTime).toLocaleString("et-EE")}</h3>
         </div>

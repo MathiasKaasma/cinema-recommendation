@@ -102,10 +102,12 @@ select {
   width: 40px;
   height: 40px;
   margin: 5px;
+  cursor: pointer;
 }
 
 .occupied {
   background-color: rgb(214, 214, 214);
+  cursor: default;
 }
 
 .available {

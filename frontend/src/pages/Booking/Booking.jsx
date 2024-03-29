@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 export default function Booking() {
   const [seats, setSeats] = useState([]);
+  const { movieId } = useParams();
+  const navigate = useNavigate();
 
   async function fetchSeats() {
     try {
@@ -19,8 +21,14 @@ export default function Booking() {
 
   useEffect(() => {
     fetchSeats();
-    console.log(seats);
   }, []);
+
+  const handleSeatClick = (rowIndex, seatIndex) => {
+    const seatValue = seats[rowIndex][seatIndex];
+    if (seatValue !== 0) {
+      navigate(`/kinnitus/${movieId}`);
+    }
+  };
 
   return (
     <div className="seats-container">
@@ -28,20 +36,15 @@ export default function Booking() {
         {seats.map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((seat, seatIndex) => (
-              <Link to="/kinnitus">
-                <div
-                  key={seatIndex}
-                  className={`seat ${
-                    seat === 1
-                      ? "available"
-                      : seat === 2
-                      ? "optimal"
-                      : "occupied"
-                  }`}
-                >
-                  {seat}
-                </div>
-              </Link>
+              <div
+                key={seatIndex}
+                className={`seat ${
+                  seat === 1 ? "available" : seat === 2 ? "optimal" : "occupied"
+                }`}
+                onClick={() => handleSeatClick(rowIndex, seatIndex)}
+              >
+                {seat}
+              </div>
             ))}
           </div>
         ))}

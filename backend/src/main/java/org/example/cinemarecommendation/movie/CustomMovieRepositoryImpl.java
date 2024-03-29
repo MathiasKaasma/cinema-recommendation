@@ -24,7 +24,7 @@ public class CustomMovieRepositoryImpl implements CustomMovieRepository {
         List<Predicate> predicates = new ArrayList<>();
 
         if (title != null) {
-            predicates.add(cb.like(movie.get("title"), "%" + title + "%"));
+            predicates.add(cb.like(cb.lower(movie.get("title")), "%" + title.toLowerCase() + "%"));
         }
         if (genre != null) {
             predicates.add(cb.equal(movie.get("genre"), genre));
@@ -38,7 +38,6 @@ public class CustomMovieRepositoryImpl implements CustomMovieRepository {
         if (language != null) {
             predicates.add(cb.equal(movie.get("language"), language));
         }
-        System.out.println(rating);
         if (rating != null && rating != 0.0) {
             predicates.add(cb.greaterThanOrEqualTo(movie.get("rating"), rating));
         }

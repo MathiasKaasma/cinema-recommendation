@@ -32,12 +32,34 @@ body {
 }
 
 /* Home styling */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+input {
+  padding: 8px;
+  margin: 2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+select {
+  padding: 8px;
+  margin: 2px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
 .movie {
   display: flex;
   justify-content: space-between;
   background-color: white;
-  margin: 2%;
-  margin-bottom: 2.5%;
+  margin: 20px 1.75%;
   border-radius: 5px;
   padding: 5px;
 }

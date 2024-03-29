@@ -17,12 +17,12 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping
+    @GetMapping("all")
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
 
-    @GetMapping("filter")
+    @GetMapping()
     public List<Movie> getFilteredMovies(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String genre,
